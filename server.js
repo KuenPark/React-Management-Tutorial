@@ -21,8 +21,8 @@ app.get('/api/customers', (req, res)=>{
   Customer.find({})
   .then(result=> (
     res.send(
-      result ))
-      ).catch(err=> console.log);
+      result )))
+      .catch(err=> console.log);
     
 })
 
