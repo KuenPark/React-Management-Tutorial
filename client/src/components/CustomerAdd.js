@@ -20,8 +20,8 @@ const CustomerAdd = ({cusmtomName}) => {
 
 
     const handleFormSubmit = (e) => {
-        e.preventDefault() // 데이터가 서버에 전달할때 오류가 발생하지 않도록
-        this.addCustomer()
+        e.preventDefault(); // 데이터가 서버에 전달할때 오류가 발생하지 않도록
+        addCustomer()
         .then((response) => {
             console.log=(response.data);
         }) 
@@ -38,7 +38,7 @@ const CustomerAdd = ({cusmtomName}) => {
 
     const handleFileChange = (e) => {
         setfile(e.target.files[0]); // 파일업로드할때, 파일중에 첫번째 값을 받음. ( 하나만 올리기 때문 )
-        setfileName(e.target.value); // 파일명
+        setfileName(e.target.files[0].name); // 파일명
     }
 
    
@@ -47,12 +47,12 @@ const CustomerAdd = ({cusmtomName}) => {
     const addCustomer = () => {
         const url = '/api/customers';
         const formData = new FormData();
-        formData.append('image', this.file);
-        formData.append('fileName', this.fileName);
-        formData.append('name', this.userName);
-        formData.append('birthday', this.birthday);
-        formData.append('gender', this.gender);
-        formData.append('job', this.job);
+        formData.append('image', file);
+        formData.append('filename', fileName);
+        formData.append('name', userName);
+        formData.append('birthday', birthday);
+        formData.append('gender', gender);
+        formData.append('job', job);
         // 전송대상에 파일이 있을경우, 아래와 같이 추가.
         const config = {
             headers: {

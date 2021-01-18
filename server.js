@@ -34,12 +34,13 @@ app.get('/api/customers', (req, res)=>{
 app.use('/image',express.static('./upload')) // /image라는 경로의 이름으로 실제 upload파일 위치 매칭.
 app.post('/api/customers', upload.single('image'), (req, res) =>{
 
-  let rqimage = '/image/' + req.body.filename;
+  console.log(req.body);
+  let rqimage = 'http://localhost:5000/image/' + req.body.filename;
   let rqname = req.body.name;
   let rqbirthday = req.body.birthday;
   let rqgender = req.body.gender;
   let rqjob = req.body.job;
-  
+
     
   let insertCustomer = new Customer({
     seq : undefined,
